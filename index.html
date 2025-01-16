@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artify Flux Image Generator</title>
 <link rel="icon" type="image/x-icon" href="image_generator_icon_main_main.ico">
+<link rel="stylesheet" href="loader_style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8004400476962295"
      crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
@@ -129,6 +130,12 @@ form > * {
       <span>Generate</span>
     </button>
     <canvas id="canvas" width="500" height="300"></canvas>
+    <div class="loading-wave">
+      <div class="loading-bar"></div>
+      <div class="loading-bar"></div>
+      <div class="loading-bar"></div>
+      <div class="loading-bar"></div>
+    </div>
     <button id="download" type="button" disabled>
       <span>Download</span>
     </button>
