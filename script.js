@@ -3,6 +3,8 @@ const generateButton = document.getElementById("generate");
 const downloadButton = document.getElementById("download");
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
+const loader = document.querySelector(".loading-wave");
+const initialMessage = "Type your prompt and click Generate!";
 
 let generatedImageUrl = null; // To store the image URL for downloading
 let image = new Image(); // Image object to hold the generated image
@@ -15,7 +17,7 @@ let offsetY = 0; // Image offset on Y
 let canvasActive = false; // To track if canvas is active (interactive)
 
 // API key is hardcoded here
-const apiKey = "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";
+const apiKey = "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";
 
 // Function to generate a random 20-digit number
 function generateRandomFileName() {
@@ -26,8 +28,8 @@ function generateRandomFileName() {
 function displayCanvasMessage(message) {
   context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
   const maxWidth = canvas.width - 100; // Padding inside the canvas
-  const lineHeight = 20; // Line height for text
-  const x = 10; // Left padding
+  const lineHeight = 0; // Line height for text
+  const x = 100; // Left padding
   let y = canvas.height / 2 - lineHeight; // Center vertically
 
   // Set font and text properties
@@ -57,7 +59,7 @@ function displayCanvasMessage(message) {
 }
 
 // Initial message on the canvas
-displayCanvasMessage("Type your prompt and click Generate!");
+displayCanvasMessage(initialMessage);
 
 // Enable/disable buttons based on input validation
 function updateButtonState() {
@@ -114,7 +116,9 @@ generateButton.addEventListener("click", async () => {
   // Disable canvas interactions while generating
   disableCanvasInteractions();
 
-  displayCanvasMessage("Generating your image, this might take a while so do not reload the page...");
+  // Show the loader and hide the initial message
+  loader.style.visibility = "visible";
+  displayCanvasMessage("");
   generateButton.disabled = true; // Disable the generate button during generation
   downloadButton.disabled = true; // Disable the download button during generation
 
@@ -147,11 +151,11 @@ generateButton.addEventListener("click", async () => {
     updateButtonState(); // Re-check the button state
   } catch (error) {
     console.error("Error generating image:", error);
-    displayCanvasMessage(
-      "An error occurred while calling the model.\nThe model might be too busy so consider trying again."
-    );
+    displayCanvasMessage("An error occurred, try again.");
   } finally {
     generateButton.disabled = false; // Re-enable the generate button
+    // Hide the loader after completion or error
+    loader.style.visibility = "hidden";
   }
 });
 
