@@ -4,7 +4,7 @@ const downloadButton = document.getElementById("download");
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 const loader = document.querySelector(".loading-wave");
-const initialMessage = "Type your prompt and click Generate!";
+const initialMessage = "This area displays the generated image.";
 
 let generatedImageUrl = null; // To store the image URL for downloading
 let image = new Image(); // Image object to hold the generated image
