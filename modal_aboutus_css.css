@@ -1,0 +1,83 @@
+/* Modal container */
+.aboutus_modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.3s ease-in-out; /* Fade-in/out effect */
+  }
+  
+  /* Modal visible state */
+  .aboutus_modal.show {
+    display: flex; /* Flex to center it */
+    opacity: 1; /* Make it visible */
+  }
+  
+  /* Modal content */
+  .aboutus_modal_content {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    width: auto; /* Let the width adjust to the content */
+    max-width: 80em; /* Maximum width limit */
+    max-height: 35em; /* Maximum height limit */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* To handle positioning inside the modal container */
+    animation: scaleIn 0.2s ease-in-out; /* Scaling animation */
+    transform-origin: center center; /* Scaling origin for smooth effect */
+  }
+  
+  /* Close button - positioned outside the modal box, at the top-right corner */
+  .aboutus-close-btn {
+    position: fixed; /* Position fixed relative to the viewport */
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    background: none;
+    z-index: 2; /* Ensure it stays above everything else */
+  }
+  
+  .aboutus-close-btn:hover {
+    color: #ff0000;
+  }
+  
+  /* Animation for modal content */
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  /* Animation for modal fade out and scale */
+  .aboutus_modal.fade-out {
+    opacity: 0; /* Fade out */
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .aboutus_modal_content.scale-out {
+    animation: scaleOut 0.3s ease-in-out;
+  }
+  
+  @keyframes scaleOut {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0.8);
+    }
+  }

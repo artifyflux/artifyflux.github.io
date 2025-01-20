@@ -1,0 +1,76 @@
+/* Define the ribbon */
+.ribbon {
+    position: fixed;
+    top: -4em; /* Start off-screen */
+    left: 0;
+    width: 100%;
+    height: 4em; /* Fixed height for the ribbon */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    color: white;
+    text-align: center;
+    font-size: 1em; /* Default font size */
+    transition: top 0.3s ease;
+    z-index: 1000;
+    pointer-events: none; /* Prevent interactions with the ribbon itself */
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-evenly; /* Distribute buttons evenly */
+    align-items: center; /* Center buttons vertically */
+}
+
+/* Hover area (top 1em of the page) */
+.hover-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4em; /* Matching the ribbon's height */
+}
+
+/* When hovering the top 1em area, reveal the ribbon */
+.hover-area:hover + .ribbon {
+    top: 0; /* Slide ribbon down */
+}
+
+/* Content below the ribbon */
+.content {
+    margin-top: 4em; /* Adjust to give space for the ribbon */
+}
+
+/* Style for each button inside the ribbon */
+.ribbon_button {
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
+    color: white;
+    padding: 0.5em 1em; /* Responsive padding using em */
+    font-size: 0.9em; /* Font size relative to the root font size */
+    border: 1px solid #fff;
+    border-radius: 1em; /* Responsive border-radius */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Add transition for transform */
+    text-align: center;
+    pointer-events: auto; /* Enable interaction with the button */
+    flex: 0 1 10em; /* Flexible width in em */
+    display: flex;
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+}
+
+/* Hover effect for the button */
+.ribbon_button:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Lighter background on hover */
+}
+
+/* Button click animation (shrinks when clicked) */
+.ribbon_button:active {
+    transform: scale(0.9); /* Shrinks the button on click */
+}
+
+/* Prevent the ribbon from hiding when hovering over the button */
+.ribbon:hover {
+    top: 0; /* Keep the ribbon visible when hovering anywhere over it */
+}
+
+/* Separator between buttons */
+.separator {
+    border-left: 0.1em solid gray; /* Responsive vertical line */
+    height: 60%; /* Responsive height of the separator */
+}
