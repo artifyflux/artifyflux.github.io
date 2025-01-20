@@ -1,12 +1,12 @@
 // Array of images and texts
 const images = [
     {
-      src: 'image_example_1.png',
-      text: 'Confident woman, standing with hands on her hips, big bright pink lips, wearing knee-high black boots, long black pants, a wrinkled black shirt, long wavy dark hair cascading down her back, intense gaze, standing in front of a graffiti-covered wall, dim urban setting, faint neon lights reflecting off wet pavement, a bold and edgy vibe, exuding strength and charisma.'
-    },
-    {
       src: 'image_example_5.png',
       text: 'A quiet forest path, dappled sunlight filtering through the trees, soft moss covering the ground, a few fallen leaves scattered around, a gentle breeze rustling the branches above, the air fresh and cool, the atmosphere calm and serene.'
+    },
+    {
+      src: 'image_example_1.png',
+      text: 'Confident woman, standing with hands on her hips, big bright pink lips, wearing knee-high black boots, long black pants, a wrinkled black shirt, long wavy dark hair cascading down her back, intense gaze, standing in front of a graffiti-covered wall, dim urban setting, faint neon lights reflecting off wet pavement, a bold and edgy vibe, exuding strength and charisma.'
     },
     {
       src: 'image_example_2.png',
