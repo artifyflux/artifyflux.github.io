@@ -6,6 +6,14 @@
   <title>Artify Flux Image Generator</title>
 <link rel="icon" type="image/x-icon" href="image_generator_icon_main_main.ico">
 <link rel="stylesheet" href="loader_style.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="ribbon.css">
+<link rel="stylesheet" href="modal_generations_css.css">
+<link rel="stylesheet" href="modal_guide_css.css">
+<link rel="stylesheet" href="modal_usage_css.css">
+<link rel="stylesheet" href="modal_aboutus_css.css">
+<link rel="stylesheet" href="modal_privacypolicy_css.css">
+<link rel="stylesheet" href="modal_video_css.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8004400476962295"
      crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
@@ -18,112 +26,28 @@
   gtag('config', 'G-S2EKXSPS2V');
 </script>
   <script src="script.js" defer></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-    form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 15px; /* Apply equal padding on all sides */
-  width: 80%; /* Adjust width to be relative to the body */
-  box-sizing: border-box; /* Ensure padding is included in width calculation */
-  max-width: 500px; /* Limit maximum width */
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
-  background: rgba(34, 34, 34, 0.6); /* Semi-transparent background */
-  backdrop-filter: blur(10px); /* Apply 50% blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari compatibility */
-}
-
-form > * {
-  margin: 0; /* Remove any extra margin from children */
-  width: 80%; /* Ensure child elements do not exceed form width */
-}
-
-    input {
-      background-color: #333;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 15px;
-      padding: 12px;
-      width: 100%;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    input:focus {
-      outline: none;
-      border-color: #56c0e8;
-      background-color: #444;
-    }
-    canvas {
-      border-radius: 15px;
-      width: 100%;
-      border: 2px solid #444;
-      background-color: #222;
-    }
-    /* Default (disabled) button style */
-    button {
-      background-color: #555;
-      color: #999;
-      border: none;
-      border-radius: 15px;
-      padding: 12px;
-      font-size: 16px;
-      width: 100%;
-      cursor: not-allowed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-    /* Active button style from Uiverse.io */
-    button:enabled {
-      align-items: center;
-      background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-      border: 0;
-      border-radius: 15px;
-      box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-      color: #ffffff;
-      display: flex;
-      font-size: 18px;
-      padding: 3px;
-      width: 100%; /* Match form elements width */
-      cursor: pointer;
-    }
-    button:enabled span {
-      background-color: rgb(5, 6, 45);
-      padding: 10px 24px;
-      border-radius: 15px;
-      width: 100%;
-      height: 100%;
-      transition: 300ms;
-    }
-    button:enabled:hover span {
-      background: none;
-    }
-    button:enabled:active {
-      transform: scale(1.0);
-    }
-  </style>
+  <script src="rotate_image.js" defer></script>
+  <script src="modal_generations.js" defer></script>
+  <script src="modal_guide.js" defer></script>
+  <script src="modal_usage.js" defer></script>
+  <script src="modal_aboutus.js" defer></script>
+  <script src="modal_privacypolicy.js" defer></script>
+  <script src="modal_video.js" defer></script>
+  <script src="generations_script.js" defer></script>
 </head>
 <body>
+<div class="hover-area"></div>
+<div class="ribbon">
+  <div class="ribbon_button" id="openGenerationsModalBtn">Generations</div>
+  <div class="ribbon_button" id="openGuideModalBtn">Guide</div>
+  <div class="ribbon_button" id="openUsageModalBtn">Usage</div>
+  <div class="separator"></div>
+  <img class="rotation_true" id="rotateImage" src="repuated_pistachio.png" width="70" height="70">
+  <div class="separator"></div>
+  <div class="ribbon_button" id="openAboutUsModalBtn">About Us</div>
+  <div class="ribbon_button" id="openPrivacyModalBtn">Privacy Policy</div>
+  <div class="ribbon_button" id="openVideoModalBtn">Video</div>
+</div>
   <form>
     <input type="text" id="prompt" placeholder="Describe your prompt">
     <button id="generate" type="button" disabled>
@@ -140,5 +64,103 @@ form > * {
       <span>Download</span>
     </button>
   </form>
+  <div class="generations_modal" id="generationsModal">
+    <span class="generations-close-btn">&times;</span>
+    <div class="generations_modal_content">
+      <h1><b><u>Generations</u></b></h1>
+      <br><br>
+      <span class="flip-button" onclick="flipImage()">Flip Image</span>
+      <br><br>
+      <!-- Image container with the image and text -->
+      <div class="image-container" id="imageContainer">
+        <img src="image_example_1.png" alt="Image" id="image">
+        <div class="text" id="imageText">
+          Confident woman, standing with hands on her hips, big bright pink lips, wearing knee-high black boots, long black pants, a wrinkled black shirt, long wavy dark hair cascading down her back, intense gaze, standing in front of a graffiti-covered wall, dim urban setting, faint neon lights reflecting off wet pavement, a bold and edgy vibe, exuding strength and charisma.
+        </div>
+      </div>
+      <!-- Next Button -->
+      <span class="next-button" onclick="nextImage()">Next</span>
+    </div>
+  </div>
+  <div id="guideModal" class="guide_modal">
+    <div class="guide_modal_content">
+        <h2><u>A Quick Guide to Prompting</u></h2>
+        <br><br>
+        <p style="text-align: left;">1. <b>Sentences:</b> The prompt should be structured in clear and concise sentences. While multiple sentences can be used to elaborate on the prompt, it is advisable to avoid overly complicated language or technical jargon that the AI might misinterpret.</p>
+        <br>
+        <p style="text-align: left;">2. <b>Commas: </b>Using commas within sentences is an excellent practice for separating details in a prompt. This approach prevents unnecessary complexity while allowing the model to process the information more effectively. Incorporating commas strategically can enhance the prompt's clarity and precision.</p>
+        <br>
+        <p style="text-align: left;">3. <b>Specificity: </b>Ensure that the prompt is as specific as possible, avoiding vague or ambiguous phrases. Clearly outline the desired features, such as colors, textures, and styles, to guide the model in generating the most accurate output.</p>
+        <br>
+        <p style="text-align: left;">4. <b>Object and Subject Focus: </b>Identify the primary object or subject of the prompt and prioritize its description. Supporting details should complement the main focus without overshadowing or diluting the central theme.</p>
+        <br>
+        <p style="text-align: left;">5. <b>Avoid Overloading Details: </b>While it is essential to provide sufficient details, overloading the prompt with excessive information can confuse the model. Maintain a balance between specificity and simplicity to achieve optimal results.</p>
+        <br>
+        <p style="text-align: left;">6. <b>Logical Flow: </b>Organize the prompt in a logical sequence, beginning with the primary subject and gradually introducing additional details. This structured approach helps the model interpret and integrate the information cohesively.</p>
+        <br>
+        <p style="text-align: left;">7. <b>Use of Adjectives: </b>Incorporate adjectives judiciously to describe attributes like texture, size, shape, or mood. However, avoid using overly complex or abstract adjectives that might lead to unintended interpretations.</p>
+        <br>
+        <p style="text-align: left;">8. <b>Avoid Contradictions: </b>Ensure that the details provided in the prompt are consistent and do not contradict each other. Conflicting instructions can result in inaccurate or unsatisfactory outputs.</p>
+        <br>
+        <p style="text-align: left;">9. <b>Contextual Clarity: </b>If the prompt involves a specific setting or environment, provide contextual information to guide the model. This helps in creating a coherent background that aligns with the central object or subject.</p>
+        <br>
+        <p style="text-align: left;">10. <b>Iterative Refinement: </b>It is recommended to refine and test the prompt iteratively. Experiment with slight variations in wording and structure to identify the most effective phrasing for achieving the desired output.</p>
+    </div>
+    <span class="guide-close-btn">&times;</span>
+  </div>
+  <div id="usageModal" class="usage_modal">
+    <div class="usage_modal_content">
+      <h2><u>Usage</u></h2>
+      <br><br>
+      <p style="text-align: left;">1. <b>Prompt: </b>The prompt must be meticulously detailed and articulated with utmost clarity, focusing on the fundamental concepts and core elements of your desired depiction. Ensuring precision in your prompt will significantly enhance the quality of the generated output.</p>
+      <br>
+      <p style="text-align: left;">2. <b>Entering: </b>You should carefully enter your prompt into the designated input bar provided within the form interface. After ensuring the accuracy of the prompt, proceed to click on the "Generate" button to initiate the image generation process.</p>
+      <br>
+      <p style="text-align: left;">3. <b>Time: </b>The generation process typically requires approximately 180 to 240 seconds to complete. During this period, it is strongly advised to remain patient and stay on the webpage to allow the process to complete without interruptions.</p>
+      <br>
+      <p style="text-align: left;">4. <b>Closing: </b>Under no circumstances should you close the webpage or refresh it while the generation is in progress. Such actions may result in the loss of your generated image. It is essential to remain on the page and wait until the process is fully completed.</p>
+      <br>
+      <p style="text-align: left;">5. <b>Canvas: </b>Once the image generation is successfully completed, the canvas will display your generated image. For desktop clients, advanced functionalities such as zooming and panning are available, allowing you to explore your image in greater detail.</p>
+      <br>
+      <p style="text-align: left;">6. <b>Download: </b>The "Download" button will become active only after the image has been successfully generated. Upon clicking this button, the image will be promptly saved to your device, ensuring a seamless download experience.</p>
+      <br>
+    </div>
+    <span class="usage-close-btn">&times;</span>
+  </div>
+  <div id="aboutUsModal" class="aboutus_modal">
+    <div class="aboutus_modal_content">
+      <h2><u><b>About Us</b></u></h2>
+      <br><br>
+      <p style="text-align: left;">We are a small, independent organization dedicated to expanding the accessibility and appreciation of AI-powered image generation. As AI image generator models continue to evolve at an unprecedented pace, we are committed to finding ways to make this technology entirely free for everyone. Unlike most AI image generator platforms that require users to sign up, create accounts, or face restrictions such as free credit limits, we offer a completely unrestricted experience. Here, there are no barriers—no sign-ups, no accounts, and no limitations on the number of images you can generate. Everything is free, and your generation per person is unlimited. Enjoy your time here and explore the limitless possibilities of AI-driven creativity!</p>
+      <br><br>
+      <footer>
+        © Artify Flux Image Generator. All Rights Reserved.
+      </footer>
+    </div>
+    <span class="aboutus-close-btn">&times;</span>
+  </div>
+  <div id="privacyModal" class="privacy_modal">
+    <div class="privacy_modal_content">
+      <h2><u><b>Privacy Policy</b></u></h2>
+      <br><br>
+      <p style="text-align: left;">We highly value and respect your privacy. The images you generate on this platform remain entirely private and are not shared publicly. As a result, you are solely responsible for the content of the generated images. Additionally, we do not store any information you provide, including the prompts you enter. Since this platform is completely free, there is no need for us to store your data or any other information. The only input required is the prompt, and the only output you receive is the image generated based on your input. This platform is designed to allow users to freely create images without the need for sign-ups, log-ins, or account creation of any kind. You have complete freedom to generate the images you desire, but please note that you are fully responsible for the images produced based on your prompts. Enjoy your creative journey here!</p>
+      <br><br>
+      <footer>
+        A Project of Artify Flux Image Generator Developer Team.
+      </footer>
+    </div>
+    <span class="privacy-close-btn">&times;</span>
+  </div>
+  <div id="videoModal" class="video_modal">
+    <div class="video_modal_content">
+      <h2><u><b>Video Tutorial</b></u></h2>
+      <br><br>
+      <video controls>
+        <source src="video_tutorial.mp4" type="video/mp4">
+      </video>
+    </div>
+    <span class="video-close-btn">&times;</span>
+  </div>
+  </div>
 </body>
 </html>
